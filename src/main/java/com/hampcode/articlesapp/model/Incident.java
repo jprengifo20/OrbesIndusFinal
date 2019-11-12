@@ -43,8 +43,8 @@ public class Incident {
 	
 
 	@Column(name = "date")
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
-	private Date date;
+	@NotEmpty(message="Debe ingresar la fecha")
+	private String date;
 
 	@Lob
 	@Column(name="observations")
@@ -77,11 +77,11 @@ public class Incident {
 		this.suppliers = suppliers;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

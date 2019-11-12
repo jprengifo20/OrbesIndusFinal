@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hampcode.articlesapp.model.Article;
 import com.hampcode.articlesapp.model.Incident;
+import com.hampcode.articlesapp.model.Request;
 
 
 @Repository
