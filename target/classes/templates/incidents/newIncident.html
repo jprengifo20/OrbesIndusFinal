@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:include="fragments/head"></th:block>
+
+<body class="index-page sidebar-collapse">
+	<th:block th:include="fragments/navbarTransparent"></th:block>
+
+	<div class="main">
+		<th:block th:include="fragments/navbarPrimary"></th:block>
+		<div class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 offset-md-2 col-sm-12">
+						<div class="title">
+							<h2>New Incident</h2>
+						</div>
+
+						<form th:object="${incident}" th:action="@{/incidents/create}"
+							th:method="post">
+
+							<div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+								<p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+
+							</div>
+
+
+							  
+							<div class="form-group">
+								<label for="supplier">Supplier</label> <select id="supplier"
+									class="form-control" th:field="*{suppliers}"
+									multiple="multiple">
+									<option th:each="supplier : ${suppliers}"
+										th:text="${supplier.enterprise}" th:value="${supplier.supplierId}"></option>
+								</select>
+							</div>
+							
+							<div class="form-group">
+								<input th:field="*{date}" id="date" type="text"
+									class="form-control validate"> <label for="date">Fecha de Incidencia</label>
+								<span class="text-danger errorMsg"
+									th:if="${#fields.hasErrors('date')}" th:errors="*{date}"
+								></span>
+							</div>
+							
+							<div class="form-group">
+								<label for="gravity">Gravedad</label> <select id="gravity"
+									name="gravity">
+									<option value="leve">LEVE</option>
+									<option value="medio">MEDIO</option>
+									<option value="grave">GRAVE</option>
+									<option value="muyGrave">MUY GRAVE</option>
+								</select>
+							</div>
+							
+							<div class="form-group">
+								<textarea th:field="*{observations}" id="observations"
+									class="form-control" rows="6"></textarea>
+								<label for="observations">Observaciones</label> 
+								
+							</div>
+							
+
+							<button type="submit" class="btn btn-dark">Save</button>
+							<a class="btn btn-primary" th:href="@{'/incidents'}">Cancelar</a>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<th:block th:include="fragments/footer"></th:block>
+	<th:block th:include="fragments/scripts"></th:block>
+</body>
+
+</html>
