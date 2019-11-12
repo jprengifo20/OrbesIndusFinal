@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.hampcode.articlesapp.model.Incident;
+import com.hampcode.articlesapp.model.Request;
 
 public interface IncidentService {
 
@@ -22,4 +23,5 @@ public interface IncidentService {
 	
     Page<Incident> findAll(Pageable pageable);
 
+    Page<Request> finByGravedad(String gravedad,Pageable pageable);
 }

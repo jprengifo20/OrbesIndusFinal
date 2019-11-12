@@ -39,6 +39,8 @@ public interface IncidentRepository extends PagingAndSortingRepository<Incident,
      */
 	Page<Incident> findAll(Pageable pageable);
 
+	@Query("SELECT i FROM Incident i WHERE i.gravity like %?1%")
+	Page<Request> finByGravedad(String gravedad,Pageable pageable);
 
 }
 

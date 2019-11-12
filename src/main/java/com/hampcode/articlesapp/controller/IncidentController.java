@@ -122,4 +122,34 @@ public class IncidentController {
 		incidentService.deleteIncident(incidentId);
 		return "redirect:/incidents";
 	}
+	
+/*	@GetMapping("/search")
+	public ModelAndView searchByGravity(@RequestParam("gravity") String gravity,
+							    @RequestParam("pageSize") Optional<Integer> pageSize,
+							    @RequestParam("page")Optional<Integer> page) throws Exception{
+		
+		ModelAndView modelAndView ;
+		
+		if(!gravity.isEmpty())
+		{
+			if(!this.pageInitPagination.initPaginationSearch(pageSize,page, INCIDENT_PAGE_VIEW, gravity).isEmpty())
+			{
+				modelAndView=this.pageInitPagination.initPaginationSearch(pageSize, page, REQUEST_QUERYS_VIEW, gravity);
+			}else
+			{
+				modelAndView=this.pageInitiPagination.initPagination(pageSize, page, REQUEST_QUERYS_VIEW);
+
+			}
+		}
+		else
+		{
+			modelAndView=this.pageInitiPagination.initPagination(pageSize, page, REQUEST_QUERYS_VIEW);
+
+		}
+
+		
+		return modelAndView;
+	}*/
+
+	
 }

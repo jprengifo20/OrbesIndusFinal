@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.hampcode.articlesapp.exception.ResourceNotFoundException;
 import com.hampcode.articlesapp.model.Incident;
+import com.hampcode.articlesapp.model.Request;
 import com.hampcode.articlesapp.repository.IncidentRepository;
 import com.hampcode.articlesapp.service.IncidentService;
 
@@ -94,6 +95,12 @@ public class IncidentServiceImpl implements IncidentService {
 	public Page<Incident> findAll(Pageable pageable) {
 		return incidentRepository.findAll(pageable);
 	}
+	
+	@Override
+	public Page<Request> finByGravedad(String gravedad, Pageable pageable) {
+		return incidentRepository.finByGravedad(gravedad, pageable);
+	}
+
 
 	/*@Override
 	public void delete(Long id) {

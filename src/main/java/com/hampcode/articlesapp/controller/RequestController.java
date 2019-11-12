@@ -190,8 +190,8 @@ public class RequestController {
 	
 	@GetMapping("/search")
 	public ModelAndView searchByArea(@RequestParam("area") String area,
-							    @RequestParam("pageSize") Optional<Integer> pageSize,
-							    @RequestParam("page")Optional<Integer> page) throws Exception{
+						    @RequestParam("pageSize") Optional<Integer> pageSize,
+						    @RequestParam("page")Optional<Integer> page) throws Exception{
 		
 		ModelAndView modelAndView ;
 		
