@@ -43,4 +43,34 @@ public class PageInitPaginationIncident {
 		return initModelView;
 	}
 
+	public  ModelAndView initPaginationSearch(Optional<Integer> pageSize, Optional<Integer> page, 
+			String url, String gravity)  {
+		ModelAndView initModelView = new ModelAndView(url);
+		// If pageSize == null, return initial page size
+		int evalPageSize = pageSize.orElse(INITIAL_PAGE_SIZE);
+		/*
+		 * If page == null || page < 0 (to prevent exception), return initial size Else,
+		 * return value of param. decreased by 1
+		 */
+		int evalPage = (page.orElse(0) < 1) ? INITIAL_PAGE : page.get() - 1;
+		
+		Page<Incident> incidentsList = incidentService.finByGravedad(gravity, PageRequest.of(evalPage,evalPageSize));
+				/*
+				 
+				  */
+				 
+		PagerModel pager = new PagerModel(incidentsList.getTotalPages(), incidentsList.getNumber(), BUTTONS_TO_SHOW);
+		initModelView.addObject("incidentsList", incidentsList);
+		initModelView.addObject("selectedPageSize", evalPageSize);
+		initModelView.addObject("pageSizes", PAGE_SIZES);
+		initModelView.addObject("pager", pager);
+		
+		return initModelView;
+	}
+	
+	
+	
+
+	
 }
+

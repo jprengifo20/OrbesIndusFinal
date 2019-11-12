@@ -31,9 +31,14 @@ public class IncidentController {
 	protected static final String INCIDENT_ADD_FORM_VIEW = "incidents/newIncident"; // form for new article
 	protected static final String INCIDENT_EDIT_FORM_VIEW = "incidents/editIncident"; // form for editing an article
 	protected static final String INCIDENT_PAGE_VIEW = "incidents/allIncidents"; // list with pagination
+	
+	protected static final String INCIDENT_QUERYS= "incidents/querysIncidents"; // list with pagination
+
+	
 	protected static final String INDEX_VIEW = "index"; // articles with pagination
 	
 	@Autowired
+	
 	private PageInitPaginationIncident pageInitPagination;
 	
 	@Autowired
@@ -123,7 +128,16 @@ public class IncidentController {
 		return "redirect:/incidents";
 	}
 	
-/*	@GetMapping("/search")
+	@GetMapping("/querysIncidents")
+	public ModelAndView listAllIncident(@RequestParam("pageSize") Optional<Integer> pageSize,
+			@RequestParam("page") Optional<Integer> page) {
+		ModelAndView modelAndView = pageInitPagination.initPagination(pageSize, page, INCIDENT_QUERYS);
+		return modelAndView;
+	}
+	
+	
+	
+	@GetMapping("/search")
 	public ModelAndView searchByGravity(@RequestParam("gravity") String gravity,
 							    @RequestParam("pageSize") Optional<Integer> pageSize,
 							    @RequestParam("page")Optional<Integer> page) throws Exception{
@@ -134,22 +148,23 @@ public class IncidentController {
 		{
 			if(!this.pageInitPagination.initPaginationSearch(pageSize,page, INCIDENT_PAGE_VIEW, gravity).isEmpty())
 			{
-				modelAndView=this.pageInitPagination.initPaginationSearch(pageSize, page, REQUEST_QUERYS_VIEW, gravity);
+				modelAndView=this.pageInitPagination.initPaginationSearch(pageSize, page, INCIDENT_QUERYS, gravity);
 			}else
 			{
-				modelAndView=this.pageInitiPagination.initPagination(pageSize, page, REQUEST_QUERYS_VIEW);
+				modelAndView=this.pageInitPagination.initPagination(pageSize, page, INCIDENT_QUERYS);
 
 			}
 		}
 		else
 		{
-			modelAndView=this.pageInitiPagination.initPagination(pageSize, page, REQUEST_QUERYS_VIEW);
+			modelAndView=this.pageInitPagination.initPagination(pageSize, page, INCIDENT_QUERYS);
 
 		}
 
 		
 		return modelAndView;
-	}*/
+	}
+	
 
 	
 }

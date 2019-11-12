@@ -9,9 +9,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.hampcode.articlesapp.model.Article;
 import com.hampcode.articlesapp.model.Incident;
-import com.hampcode.articlesapp.model.Request;
 
 
 @Repository
@@ -40,7 +38,7 @@ public interface IncidentRepository extends PagingAndSortingRepository<Incident,
 	Page<Incident> findAll(Pageable pageable);
 
 	@Query("SELECT i FROM Incident i WHERE i.gravity like %?1%")
-	Page<Request> finByGravedad(String gravedad,Pageable pageable);
+	Page<Incident> finByGravedad(String gravedad,Pageable pageable);
 
 }
 
