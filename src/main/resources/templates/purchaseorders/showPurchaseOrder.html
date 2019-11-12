@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  
+  	 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ 	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	 <script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
+  	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
+	
+</head>
+<th:block th:include="fragments/head"></th:block>
+
+<body class="index-page sidebar-collapse">
+<th:block th:include="fragments/navbarTransparent"></th:block>
+
+<div class="main">
+    <th:block th:include="fragments/navbarPrimary"></th:block>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 col-sm-12">
+                    <div class="title">
+                        <h2 th:text="${purchaseorder.product}"></h2>
+                    </div>
+                    <h4 th:text="' Responsable: ' + ${purchaseorder.responsible}">Responsable</h4>
+                    <h4 th:text="' Producto: ' + ${purchaseorder.product}">Producto</h4>  
+                    <h4 th:text="' Fecha: ' + ${purchaseorder.date}">Fecha</h4>  
+                    
+                </div>
+            </div>
+            &nbsp;
+            &nbsp;
+            <div class="row">
+                <div class="col-md-8 offset-md-2 col-sm-12"  sec:authorize="isAuthenticated()">
+                    <a th:href="@{'/purchaseorders/' + ${purchaseorder.id} + '/edit'}"
+                       class="btn btn-primary">Edit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:include="fragments/footer"></th:block>
+<th:block th:include="fragments/scripts"></th:block>
+</body>
+
+</html>
