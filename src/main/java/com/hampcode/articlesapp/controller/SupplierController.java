@@ -28,6 +28,10 @@ public class SupplierController {
 	protected static final String SUPPLIER_ADD_FORM_VIEW = "suppliers/newSupplier"; // form for new article
 	protected static final String SUPPLIER_EDIT_FORM_VIEW = "suppliers/editSupplier"; // form for editing an article
 	protected static final String SUPPLIER_PAGE_VIEW = "suppliers/allSuppliers"; // list with pagination
+	
+	
+	protected static final String REQUEST_QUERYS_VIEW = "suppliers/querysSuppliers";
+
 	protected static final String INDEX_VIEW = "index"; // articles with pagination
 
 	
@@ -109,35 +113,50 @@ public class SupplierController {
 
 	
 	
-	/*@PostMapping(path = "/{id}/update")
-	public String updateSupplier(@PathVariable(value = "id") Long supplierId, @Valid Supplier supplierDetails,
-			BindingResult result, Model model, RedirectAttributes attr) {
-
-		if (result.hasErrors() || supplierService.findById(supplierId) == false) {
-
-			/// After the redirect: flash attributes pass attributes to the model
-			attr.addFlashAttribute("org.springframework.validation.BindingResult.supplier", result);
-			attr.addFlashAttribute("supplier", supplierDetails);
-
-			attr.addFlashAttribute("error", "No se permite articulos con el mismo titulo y autor");
-
-			return "redirect:/suppliers/" + articleDetails.getArticleId() + "/edit";
-		}
-
-		articleService.updateArticle(articleId, articleDetails);
-		model.addAttribute("article", articleService.findById(articleId));
-		return "redirect:/articles/" + articleId;
-	}*/
-
-	
-	
-	
 	
 	
 	@GetMapping(value = "/{id}/delete")
 	public String deleteSupplier(@PathVariable("id") Long supplierId) {
 		supplierService.deleteSupplier(supplierId);
 		return "redirect:/suppliers";
+	}
+	
+	/////////////////////
+	
+	@GetMapping("/querysSuppliers")
+	public ModelAndView listAllRequest(@RequestParam("pageSize") Optional<Integer> pageSize,
+			@RequestParam("page") Optional<Integer> page) {
+		ModelAndView modelAndView = pageInitPagination.initPagination(pageSize, page, REQUEST_QUERYS_VIEW);
+		return modelAndView;
+	}
+	
+	
+	@GetMapping("/search")
+	public ModelAndView searchByEnterprise(@RequestParam("enterprise") String enterprise,
+						    @RequestParam("pageSize") Optional<Integer> pageSize,
+						    @RequestParam("page")Optional<Integer> page) throws Exception{
+		
+		ModelAndView modelAndView ;
+		
+		if(!enterprise.isEmpty())
+		{
+			if(!this.pageInitPagination.initPaginationSearch(pageSize,page, SUPPLIER_PAGE_VIEW, enterprise).isEmpty())
+			{
+				modelAndView=this.pageInitPagination.initPaginationSearch(pageSize, page, REQUEST_QUERYS_VIEW, enterprise);
+			}else
+			{
+				modelAndView=this.pageInitPagination.initPagination(pageSize, page, REQUEST_QUERYS_VIEW);
+
+			}
+		}
+		else
+		{
+			modelAndView=this.pageInitPagination.initPagination(pageSize, page, REQUEST_QUERYS_VIEW);
+
+		}
+
+		
+		return modelAndView;
 	}
 
 }
