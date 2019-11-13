@@ -44,6 +44,7 @@
 						<table class="table table-responsive highlight">
 							<thead>
 								<tr>
+									<th>ID</th>								
 									<th>Proveedor</th>
 									<th>Fecha</th>
 									<th>Gravedad</th>
@@ -56,7 +57,7 @@
 							</thead>
 							<tbody>
 								<tr th:each="incident : ${incidentsList}">
-									
+									<td th:text="${incident.id}"></td>
 									<td><th:block th:each="supplier : ${incident.suppliers}">
 											<span th:text="${supplier.enterprise} + ' '">Item
 												description here...</span>
