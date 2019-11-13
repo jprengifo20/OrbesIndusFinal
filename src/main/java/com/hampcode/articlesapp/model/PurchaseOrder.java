@@ -2,13 +2,26 @@ package com.hampcode.articlesapp.model;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+import java.lang.*;
+
+import javax.validation.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.internal.constraintvalidators.bv.time.futureorpresent.FutureOrPresentValidatorForDate;
 
 
 
@@ -29,13 +42,18 @@ public class PurchaseOrder {
 	@Column(name = "responsible")
 	private String responsible;
 	
-/*
 	@NotEmpty(message="Error de validación: se necesita un valor")
-	@Column(name = "suppliers")
-	private List<Supplier> suppliers;*/
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "purchaseorder_supplier", 
+				joinColumns = { @JoinColumn(name = "purchaseorder_id") }, 
+				inverseJoinColumns = {@JoinColumn(name = "supplier_id") 
+			})
+	private List<Supplier> suppliers = new ArrayList<>();
 	
+
 	
-	@NotEmpty(message="Error de validación: se necesita un valor")
+	@NotEmpty(message="Error de validación: se necesita un valor")	
+	@Length(min = 10, max = 10, message = "Complete correctamente los datos")
 	@Column(name = "date")
 	private String date;
 	
@@ -78,7 +96,7 @@ public class PurchaseOrder {
 		this.responsible = responsible;
 	}
 
-	/*
+
 	public List<Supplier> getSuppliers() {
 		return suppliers;
 	}
@@ -86,7 +104,7 @@ public class PurchaseOrder {
 	public void setSuppliers(List<Supplier> suppliers) {
 		this.suppliers = suppliers;
 	}
-	*/
+	
 
 	public String getDate() {
 		return date;
