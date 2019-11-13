@@ -25,6 +25,21 @@
     });
 </script>
 
+<script type="text/javascript">
+function confirmar()
+{ var msg=confirm("Estas segur?");
+
+if(msg==true)
+	{
+return true;
+}
+else
+	{
+return false;
+}
+}
+</script>
+
 </head>
 <th:block th:include="fragments/head"></th:block>
 
@@ -52,7 +67,6 @@
 							
 						</div>
 
-			
 
 						<table class="table table-responsive highlight">
 							<thead>
@@ -79,12 +93,19 @@
 									<td th:text="${request.date}"></td>
 
 
+
 									<td><a
-										th:href="@{/requests/{id}(id=${request.id})}"><i
-											class="fab fa-readme"></i></a></td>
+										
+										th:href="@{/requests/{id}(id=${request.id})}" ><i
+											 class="fab fa-readme"></i></a></td>
 									<td><a
-										th:href="@{/requests/{id}/edit(id=${request.id})}"><i
-											class="far fa-edit"></i></a></td>
+										th:href="@{/requests/{id}/edit(id=${request.id})}">
+										<i onclick="return confirmar()"
+											class="far fa-edit">
+										</i>
+										</a> 
+									</td>
+									
 									<td><a
 										th:href="@{/requests/{id}/delete(id=${request.id})}"><i
 											class="fas fa-trash-alt"></i></a></td>
