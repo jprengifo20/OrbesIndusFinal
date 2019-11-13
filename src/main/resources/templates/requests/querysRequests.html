@@ -16,7 +16,29 @@
   } );
   </script>
   
+<!-- Script del filtro-->	
+<script>
+var getData=function()
+{ 
+var area=document.getElementById('area').value;
 
+
+
+if(area=="" )
+	{
+
+		alert("Ingrese un valor en el campo para relizar la busqueda");
+	
+	}
+		else{
+			alert("No existe registro");
+
+			}
+	
+}
+
+
+</script>
 </head>
 <th:block th:include="fragments/head"></th:block>
 
@@ -41,13 +63,13 @@
 									<form th:action="@{/requests/search}" method="GET">
 								<div class="form-row align-items-center">
 								<div class="col-auto">
-									<label class="sr-only" for="inputArea">Area</label>
-									<input id="inputArea" type="text" class="form control" name="area"
+									<label class="sr-only" for="area">Area</label>
+									<input id="area" type="text" class="form control" name="area"
 									placeholder="Search by Area">
 								</div>
 								
 								<div class="col-auto">
-									<button type="submit" class="btn btn-primary">Search</button>
+									<button type="submit" onclick="getData()" class="btn btn-primary">Search</button>
 								</div>
 								</div>
 							</form>				

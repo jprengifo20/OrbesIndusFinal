@@ -9,6 +9,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.hampcode.articlesapp.model.Request;
 import com.hampcode.articlesapp.model.Supplier;
 
 @Repository
@@ -36,4 +37,8 @@ public interface SupplierRepository extends PagingAndSortingRepository<Supplier,
      *                  specified by the Pageable object
      */
     Page<Supplier> findAll(Pageable pageable);
+    
+    
+    @Query("SELECT a FROM Supplier a WHERE a.enterprise like %?1%")
+    Page<Supplier> finByEnterprise(String enterprise,Pageable pageable);
 }

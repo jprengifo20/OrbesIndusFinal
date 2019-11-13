@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.hampcode.articlesapp.model.Request;
 import com.hampcode.articlesapp.model.Supplier;
 
 public interface SupplierService {
@@ -33,4 +34,8 @@ public interface SupplierService {
 
 	//Pagination
     Page<Supplier> findAll(Pageable pageable);
+    
+    
+    Page<Supplier> finByEnterprise(String enterprise,Pageable pageable);
+
 }

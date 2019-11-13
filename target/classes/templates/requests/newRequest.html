@@ -2,6 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+<script src="../../static/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../static/sweetalert.css">
+
+
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   
@@ -13,7 +17,7 @@
 <!-- Scrip del datapicker -->	
 <script>
 $( function () {
-    $( "#datepicker" ).datepicker({
+    $( "#date" ).datepicker({
       showOn: "button",
       buttonImage: "/img/calendar.png",
       buttonImageOnly: true,
@@ -33,6 +37,44 @@ $(document).ready(function()
          $(this).val());
     });
 });
+</script>
+
+
+<script>
+var getData=function()
+{ 
+var quantity=document.getElementById('quantity').value;
+var state=document.getElementById('state').value;
+var date=document.getElementById('date').value;
+var product=document.getElementById('product').value;
+
+
+if(state=="" || quantity=="")
+	{
+	if(date=="" || product=="")
+		{
+		alert("Error al crear la solicitud, ingrese nuevamente");
+		}
+	}
+	
+	else{	
+		if(date=='date' && state=='state' )
+				{
+				
+					alert("Registro satisfactorio");
+					
+	
+				}
+				else{
+					alert("Registro satisfactorio");
+		
+					}
+		}
+	
+	
+}
+
+
 </script>
 
 
@@ -59,6 +101,8 @@ $(document).ready(function()
 							   <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
 							
 							</div>
+							
+							
 							
 							
  								 <h5>[Seleccione Area]</h5>
@@ -105,7 +149,7 @@ $(document).ready(function()
 							
 							<div class="form-group">
 								<label for="date">Fecha</label>
-							<input th:field="*{date}" id="datepicker" type="text"
+							<input th:field="*{date}" id="date" type="text"
 								class="form-control validate"> 
 								<span class="text-danger errorMsg"
 								    th:if="${#fields.hasErrors('date')}" th:errors="*{date}">								
@@ -132,8 +176,10 @@ $(document).ready(function()
 								</span>
 							</div>
 							
+								
+							<button class="btn btn-primary" onclick="getData()">Registrar</button>
 									
-							<button type="submit" class="btn btn-dark">Guardar</button>
+							<!--  <button type="submit" class="btn btn-dark">Guardar</button> -->
 							<a class="btn btn-primary" th:href="@{'/requests'}">Cancelar</a>
 
 						</form>

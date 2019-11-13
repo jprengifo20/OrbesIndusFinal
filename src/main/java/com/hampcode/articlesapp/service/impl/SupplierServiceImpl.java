@@ -81,5 +81,10 @@ supplierRepository.delete(findById(supplierId));
 		return supplierRepository.findAll(pageable);
 	}
 
+	@Override
+	public Page<Supplier> finByEnterprise(String enterprise, Pageable pageable) {
+		return supplierRepository.finByEnterprise(enterprise, pageable);
+	}
+
 	
 }
