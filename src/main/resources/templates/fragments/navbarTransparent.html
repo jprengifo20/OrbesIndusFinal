@@ -24,7 +24,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" th:href="@{/requests}">Solicitud de compra</a>
-          <a class="dropdown-item" th:href="@{/purchaseorders}">Orden de compra</a>
+          <a class="dropdown-item" th:href="@{/purchaseorders/new}">Orden de compra</a>
           <a class="dropdown-item" th:href="@{/suppliers}">Proveedores</a>
 		 <a class="dropdown-item" th:href="@{/articles}">Productos</a>
 		 <a class="dropdown-item" th:href="@{/incidents}">Incidencias</a>
@@ -51,8 +51,14 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" th:href="@{/requests/querysRequests}">Solicitud de compra</a>
 		 <a class="dropdown-item" th:href="@{/requests/new}">Solicitud de compra</a>
+<<<<<<< Updated upstream
           <a class="dropdown-item" th:href="@{/purchaseorders/new}">Orden de compra</a>
           <a class="dropdown-item" th:href="@{/suppliers/querysSuppliers}">Proveedores</a>
+=======
+          
+          <a class="dropdown-item" th:href="@{/purchaseorders/querysPurchaseOrders}">Orden de compra</a>
+          <a class="dropdown-item" th:href="@{/suppliers/new}">Proveedores</a>
+>>>>>>> Stashed changes
 		 <a class="dropdown-item" th:href="@{/articles/new}">Productos</a>
 		 <a class="dropdown-item" th:href="@{/incidents/querysIncidents}">Incidencias</a>
         </div>

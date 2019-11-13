@@ -9,6 +9,17 @@
 	 <script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
   	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
 	
+	<script>
+$( function() {
+    $( "#datepicker" ).datepicker({
+      showOn: "button",
+      buttonImage: "/img/calendar.png",
+      buttonImageOnly: true,
+      buttonText: "Select date"
+    });
+  } );
+  </script>
+	
 </head>
 <th:block th:include="fragments/head"></th:block>
 
@@ -32,6 +43,16 @@
 								<p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
 							</div>
 							
+							
+							<div class="form-group">
+								<label for="supplier">Proveedor</label> <select id="supplier"
+									class="form-control" th:field="*{suppliers}"
+									multiple="multiple">
+									<option th:each="supplier : ${suppliers}"
+										th:text="${supplier.enterprise}" th:value="${supplier.supplierId}"></option>
+								</select>
+							</div>
+							
 
 							<div class="form-group">
 								<input th:field="*{product}" id="product" type="text"
@@ -50,12 +71,13 @@
 							
 							
 
-							<div class="form-group">
-								<input th:field="*{date}" id="date" type="text"
-									class="form-control validate"> <label for="date">Fecha</label>
+						<div class="form-group">
+								<label for="date">Fecha</label>
+							<input th:field="*{date}" id="datepicker" type="text"
+								class="form-control validate"> 
 								<span class="text-danger errorMsg"
-									th:if="${#fields.hasErrors('date')}"
-									th:errors="*{date}"></span>
+								    th:if="${#fields.hasErrors('date')}" th:errors="*{date}">								
+								</span>
 							</div>
 							
 							
