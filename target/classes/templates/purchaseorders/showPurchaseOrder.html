@@ -10,6 +10,12 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	 <script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
   	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
 	
+	<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+	
 </head>
 <th:block th:include="fragments/head"></th:block>
 
@@ -23,6 +29,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
             <div class="row">
                 <div class="col-md-8 offset-md-2 col-sm-12">
                     <div class="title">
+                    <h1>Se guardo correctamente la incidencia</h1>
                         <h2 th:text="${purchaseorder.product}"></h2>
                     </div>
                     <h4 th:text="' Responsable: ' + ${purchaseorder.responsible}">Responsable</h4>
