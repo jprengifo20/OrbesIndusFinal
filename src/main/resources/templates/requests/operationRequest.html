@@ -49,6 +49,8 @@
 									class="form-control validate"> <label for="id">id</label>
 							</div>
 
+
+							
 								
 									 <fieldset  style="display:none">
 									 <input type="radio" name="area" id="area" value="Produccion" checked="checked"> Produccion
@@ -88,6 +90,18 @@
 									th:errors="state"></span>
 							</div>
 
+
+ 							<a class="nav-link dropdown-toggle" 
+							        href="#" id="state" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  >
+							          Estado de solicitud..
+							        </a>
+							        <div class="dropdown-menu" aria-labelledby="eS">
+							  <a class="dropdown-item" th:href="@{/requests}"> APROBADO</a>
+							<a class="dropdown-item" th:href="@{/requests}">RECHAZADO</a>
+															         
+							        </div>
+							        
+							        
 							<div class="form-group"  style="display:none" >
 								<input th:field="*{date}" id="datepicker" type="text"
 									class="form-control validate"> <label for="date">Fecha</label>
