@@ -46,8 +46,7 @@
 							  
 							<div class="form-group">
 								<label for="supplier">Supplier</label> <select id="supplier"
-									class="form-control" th:field="*{suppliers}"
-									multiple="multiple">
+									class="form-control" th:field="*{suppliers}">
 									<option th:each="supplier : ${suppliers}"
 										th:text="${supplier.enterprise}" th:value="${supplier.supplierId}"></option>
 								</select>
@@ -80,7 +79,7 @@
 							</div>
 							
 
-							<button type="submit" class="btn btn-dark">Save</button>
+							<button type="submit" class="btn btn-dark">Registrar</button>
 							<a class="btn btn-primary" th:href="@{'/incidents'}">Cancelar</a>
 
 						</form>

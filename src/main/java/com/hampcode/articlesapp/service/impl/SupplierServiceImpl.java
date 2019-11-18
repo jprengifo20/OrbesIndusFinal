@@ -41,7 +41,7 @@ public class SupplierServiceImpl implements SupplierService {
 
 		supplier.setEnterprise(supplierDetails.getEnterprise());
 		supplier.setRuc(supplierDetails.getRuc());
-		supplier.setProduct(supplierDetails.getProduct());
+		supplier.setDireccion(supplierDetails.getDireccion());
 		supplier.setPhone(supplierDetails.getPhone());
 		
 		supplierRepository.save(supplier);

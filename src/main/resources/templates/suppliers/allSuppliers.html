@@ -33,15 +33,15 @@
 						</div>
 
 
-						<table class="table table-responsive highlight">
+						<table class="table table-bordered">	
 							<thead>
 								<tr>
+								
 									<th>Empresa</th>
 									<th>RUC</th>
-									<th>Producto</th>
+									<th>Direccion de Empresa</th>
 									<th>Telefono</th>
 
-									<th></th>
 									<th></th>
 									<th></th>
 								</tr>
@@ -50,7 +50,7 @@
 								<tr th:each="supplier : ${suppliersList}">
 									<td th:text="${supplier.enterprise}"></td>
 									<td th:text="${supplier.ruc}"></td>
-									<td th:text="${supplier.product}"></td>
+									<td th:text="${supplier.direccion}"></td>
 									<td th:text="${supplier.phone}"></td>
 
 									<td><a
@@ -59,9 +59,7 @@
 									<td><a
 										th:href="@{/suppliers/{id}/edit(id=${supplier.supplierId})}"><i
 											class="far fa-edit"></i></a></td>
-									<td><a
-										th:href="@{/suppliers/{id}/delete(id=${supplier.supplierId})}"><i
-											class="fas fa-trash-alt"></i></a></td>
+									
 								</tr>
 							</tbody>
 						</table>

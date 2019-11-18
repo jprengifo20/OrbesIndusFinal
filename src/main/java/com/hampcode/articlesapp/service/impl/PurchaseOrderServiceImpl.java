@@ -47,7 +47,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
 		purchaseorder.setSuppliers(purchaseorderDetails.getSuppliers());
 		purchaseorder.setDate(purchaseorderDetails.getDate());
-		purchaseorder.setProduct(purchaseorderDetails.getProduct());
+		purchaseorder.setProducts(purchaseorder.getProducts());
 		purchaseorder.setDetail(purchaseorderDetails.getDetail());
 		purchaseorderRepository.save(purchaseorder);
 		return purchaseorder;
@@ -96,8 +96,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	}
 	
 	@Override
-	public Page<PurchaseOrder> findByProduct(String product, Pageable pageable) {
-		return purchaseorderRepository.findByProduct(product, pageable);
+	public Page<PurchaseOrder> findByResponsible(String responsible, Pageable pageable) {
+		return purchaseorderRepository.findByResponsible(responsible, pageable);
 	}
 
 

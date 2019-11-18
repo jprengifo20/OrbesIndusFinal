@@ -18,12 +18,8 @@ React Native, which enables native Android, iOS, and UWP development with React,
 On April 18, 2017, Facebook announced React Fiber, a new core algorithm of React framework library for building user interfaces.[11] React Fiber was to become the foundation of any future improvements and feature development of the React framework.[12][needs update]
 On April 19, 2017, React 360 V1.0.0 was released to the public.[13] This allowed developers with experience using react to jump into VR development.', 'React (also known as React.js or ReactJS) is a JavaScript library[3] for building user interfaces. It is maintained by Facebook and a community of individual developers and companies.','React (JavaScript library)');
 
-
-
 INSERT INTO  users(enabled,password,user_name) VALUES(true,'$2a$10$sr2ZuTYlZ.LsliI6sv.HqeH39WsA.gz9Fdr.S0CyCBByyPQ8TObvS','admin');
 INSERT INTO  users(enabled,password,user_name) VALUES(true,'$2a$10$ZoqMrCUHNN8lE2g1zssyuucNhExlYwN06kM/Jo6vEBhyTQduQ7iCy','jefe');
-
-
 
 INSERT INTO authorities(authority,user_id) VALUES('ROLE_ADMIN',1);
 INSERT INTO authorities(authority,user_id) VALUES('ROLE_USER',2);

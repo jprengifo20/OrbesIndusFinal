@@ -10,16 +10,40 @@
 	 <script src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
 	
-<script>
-$( function() {
-    $( "#datepicker" ).datepicker({
-      showOn: "button",
-      buttonImage: "/img/calendar.png",
-      buttonImageOnly: true,
-      buttonText: "Select date"
-    });
-  } );
-  </script>
+	<script>
+	  $( function() {
+	    var dateFormat = "mm/dd/yy",
+	      from = $( "#date" )
+	        .datepicker({
+	          defaultDate: "+1w",
+	          changeMonth: true,
+	          numberOfMonths: 3
+	        })
+	        .on( "change", function() {
+	          to.datepicker( "option", "minDate", getDate( this ) );
+	        }),
+	      to = $( "#date2" ).datepicker({
+	        defaultDate: "+1w",
+	        changeMonth: true,
+	        numberOfMonths: 3
+	      })
+	      .on( "change", function() {
+	        from.datepicker( "option", "maxDate", getDate( this ) );
+	      });
+	 
+	    function getDate( element ) {
+	      var date;
+	      try {
+	        date = $.datepicker.parseDate( dateFormat, element.value );
+	      } catch( error ) {
+	        date = null;
+	      }
+	 
+	      return date;
+	    }
+	  } );
+	  </script>
+
 
 
 <!-- Scrip del checkradio -->	
@@ -81,11 +105,15 @@ $(document).ready(function()
 
 							
 
+							
+							
+							
 							<div class="form-group">
-								<input th:field="*{product}" id="product" type="text"
-									class="form-control validate"> <label for="product">Producto</label>
-								<span class="text-danger errorMsg"
-									th:if="${#fields.hasErrors('product')}" th:errors="*{product}"></span>
+								<label for="product">Producto</label> <select id="product"
+									class="form-control" th:field="*{products}" multiple="multiple">
+									<option th:each="product : ${products}"
+										th:text="${product.name}" th:value="${product.id}"></option>
+								</select>
 							</div>
 							
 							
@@ -98,7 +126,7 @@ $(document).ready(function()
 							</div>
 
 
-						<div class="form-group">
+							<div class="form-group" style="display:none">
 								<input th:field="*{state}" id="state" type="text"
 									class="form-control validate"> <label for="state">Estado</label>
 								<span class="text-danger errorMsg"
@@ -106,13 +134,16 @@ $(document).ready(function()
 									th:errors="state"></span>
 							</div>
 
-							<div class="form-group">
-								<input th:field="*{date}" id="datepicker" type="text"
-									class="form-control validate"> <label for="date">Fecha</label>
-								<span class="text-danger errorMsg"
-									th:if="${#fields.hasErrors('date')}"
-									th:errors="*{date}"></span>
+								<div>
+									<label for="date">Desde: </label>
+									<input th:field="*{date}"  id="date" type="text" name="date">
+									<label for="date2">Hasta: </label>
+									<input th:field="*{date2}"  id="date2"  type="text" name="date2">
+										<span class="text-danger errorMsg"
+										   	th:if="${#fields.hasErrors('area')}" th:errors="*{area}">								
+										</span>
 							</div>
+							<h6> </h6>
 							
 							
 							<div class="form-group">

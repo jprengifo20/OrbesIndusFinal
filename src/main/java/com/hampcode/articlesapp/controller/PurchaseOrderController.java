@@ -18,8 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hampcode.articlesapp.common.PageInitPaginationPurchaseOrder;
+import com.hampcode.articlesapp.model.Product;
 import com.hampcode.articlesapp.model.PurchaseOrder;
 import com.hampcode.articlesapp.model.Supplier;
+import com.hampcode.articlesapp.service.ProductService;
 import com.hampcode.articlesapp.service.PurchaseOrderService;
 import com.hampcode.articlesapp.service.SupplierService;
 
@@ -38,13 +40,15 @@ public class PurchaseOrderController {
 	protected static final String INDEX_VIEW = "index"; // articles with pagination
 	
 	@Autowired
-	
 	private PageInitPaginationPurchaseOrder pageInitPagination;
 	
 	@Autowired
 	private PurchaseOrderService purchaseorderService;
 	@Autowired
 	private SupplierService supplierService;
+	
+	@Autowired
+	private ProductService productService;
 
 	@GetMapping("/{id}")
 	public String getPurchaseOrderById(@PathVariable(value = "id") Long purchaseorderId, Model model) {
@@ -67,6 +71,8 @@ public class PurchaseOrderController {
 			model.addAttribute("purchaseorder", new PurchaseOrder());
 			 List<Supplier> suppliers = supplierService.getAllSupplier();
 		     model.addAttribute("suppliers", suppliers);
+		     List<Product> products = productService.getAllProducts();
+		     model.addAttribute("products", products);
 		}
 		return PURCHASEORDER_ADD_FORM_VIEW;
 	}
@@ -94,8 +100,11 @@ public class PurchaseOrderController {
 		 * with field values
 		 */
 		if (!model.containsAttribute("purchaseorder")) {
-			 List<Supplier> suppliers = supplierService.getAllSupplier();
+			   List<Supplier> suppliers = supplierService.getAllSupplier();
 		        model.addAttribute("suppliers", suppliers);
+		        List<Product> products = productService.getAllProducts();
+			     model.addAttribute("products", products);
+			     
 			model.addAttribute("purchaseorder", purchaseorderService.findById(purchaseorderId));
 			
 		}

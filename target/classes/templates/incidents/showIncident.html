@@ -48,7 +48,9 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
             <div class="row">
                 <div class="col-md-8 offset-md-2 col-sm-12"  sec:authorize="isAuthenticated()">
                     <a th:href="@{'/incidents/' + ${incident.id} + '/edit'}"
-                       class="btn btn-primary">Edit</a>
+                       class="btn btn-primary">Ver detalle</a>
+                       <a class="btn btn-primary" th:href="@{'/incidents/'}">Aceptar</a>
+                       
                 </div>
             </div>
         </div>

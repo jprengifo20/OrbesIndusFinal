@@ -32,8 +32,8 @@ public class Supplier {
 	private String ruc;
 
 	@NotEmpty(message="Error de validación: se necesita un valor")
-	@Column(name = "product")
-	private String product;
+	@Column(name = "direccion")
+	private String direccion;
 
 	@Size(min=9, max=9, message="Debe llener los campos correctamente")
 	@NotEmpty(message="Error de validación: se necesita un valor")
@@ -82,12 +82,12 @@ public class Supplier {
 		this.ruc = ruc;
 	}
 
-	public String getProduct() {
-		return product;
+	public String getDireccion() {
+		return direccion;
 	}
 
-	public void setProduct(String product) {
-		this.product = product;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 	
 	public String getPhone() {

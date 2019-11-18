@@ -23,11 +23,10 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
             <div class="row">
                 <div class="col-md-8 offset-md-2 col-sm-12">
                     <div class="title">
-                    	<h1>Se guardo correctamente el proveedor</h1>
                         <h2 th:text="${supplier.enterprise}"></h2>
                     </div>
                     <h6 th:text="'RUC: ' + ${supplier.ruc}">Ruc</h6>
-                    <h6 th:text="'Product: ' + ${supplier.product}">Product</h6>
+                    <h6 th:text="'Product: ' + ${supplier.direccion}">Direccion de empresa</h6>
                     <h6 th:text="'Phone: ' + ${supplier.phone}">Phone</h6>
   
                 </div>
@@ -37,7 +36,9 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
             <div class="row">
                 <div class="col-md-8 offset-md-2 col-sm-12"  sec:authorize="isAuthenticated()">
                     <a th:href="@{'/suppliers/' + ${supplier.supplierId} + '/edit'}"
-                       class="btn btn-primary">Edit</a>
+                       class="btn btn-primary">Ver detalle</a>
+                       		<a class="btn btn-primary" th:href="@{'/suppliers/'}">Aceptar</a>
+                       
                 </div>
             </div>
         </div>

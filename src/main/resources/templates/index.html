@@ -15,7 +15,16 @@
   } );
   </script>
   
-
+ <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+  <script>
+  $( function() {
+    $( "#tabs2" ).tabs();
+  } );
+  </script>
 </head>
 <th:block th:include="fragments/head"></th:block>
 
@@ -28,63 +37,91 @@
 				<div class="row">
 					<div class="col-md-8">
 						<div class="container">
-							<div class="row" th:each="article : ${articlesList}">
-								<div class="col">
-									<div class="title">
-										<h2 th:text="${article.title}"></h2>
-									</div>
-									<div>
-										<h6
-											th:text="'written by ' + ${article.author} + ' | ' + ${article.category}
-                                               + ' | ' + ${#dates.format(article.updatedAt, 'dd-MM-yyyy HH:mm')}"></h6>
-										<p th:text="${article.description}"></p>
-									</div>
-									<div class="container">
-										<div class="row">
-											<div class="col-sx-6 offset-sx-3"></div>
-											<a th:href="@{'/home/' + ${article.articleId}}"
-												class="btn btn-primary">continue</a>
-										</div>
-									</div>
-								</div>
-							</div>
+							<h3>Orbes Agricola S.A.C</h3>
+						<div id="tabs">						
+						  <ul>
+						    <li><a href="#tabs-1">Vision</a></li>
+						    <li><a href="#tabs-2">Mision</a></li>
+						    <li><a href="#tabs-3">Infraestructura</a></li>
+							 <li><a href="#tabs-4">Contactenos</a></li>
+						    
+						  </ul>
+						  <div id="tabs-1">
+						    <p>“Ser la primera compañía peruana proveedora de soluciones de tecnologías para el agro: Tractores Agrícolas, Equipos de Pulverización, Espacios Verdes y Riego Tecnificado”</p>
+						  </div>
+						  <div id="tabs-2">
+						    <p>"Contribuir al desarrollo tecnológico de la producción y crear prosperidad en el sector agrícola peruano”</p>
+						  </div>
+						  <div id="tabs-3">
+						    <p>Nuestra empresa cuenta con una infraestructura actual de 4900 m2 en un moderno edificio de 7 pisos destinados a oficinas de servicios, oficinas de ingeniería y sala de conferencias, con el debido equipamiento informático y multimedia. Cuenta con 3000 m2 destinados a las áreas de almacén y logística. Además de un área de Talleres y maniobras de 850 m2. Cerca de las tiendas de John Deere, Massey, Valtra, Mahindra, New Holland, Bancos, cines, Centros comerciales, etc.</p>
+						  </div>
+						   <div id="tabs-4">
+						    <p> OFICINAS ORBES AGRICOLA S.A.C: </p>
+							<p>LIMA (SEDE CENTRAL): Av. Los Cipreses N° 136 y 140 (costado Mall Plaza) Santa Anita – Lima – Perú</p>						  
+						   <p> FABRICA Y ALMACEN:  </p>
+							<p> Calle Minería N° 333 – Santa Anita – LIMA</p>						  
+						   <p> Horario de Atención </p>
+<p>Lunes a Viernes: 8:00 am – 6:00 pm
+Sábado: 9:00 am – 1:00 pm
+
+Telf.: (511)362-2343 – Cel.: 9959-00397
+
+Email: ventas@orbesagricolasac.com</p>						  
+						  </div>
 						</div>
-
-
-						<div class="container">
-							<th:block th:include="fragments/pagination"></th:block>
+						<h3>Nuestros productos estrella</h3>
 						</div>
-
-
-
+						
 					</div>
+					
+											
+		
+		<div class="card" style="width: 15rem;">
+
+  <img src="/img/valvulas.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Valvulas </h5>
+    <p class="card-text">Una válvula relé de tres vías, activada por un mando hidráulico o neumático de presión, abre y cierra la válvula que controla. La válvula estándar se suministra en posición “normalmente cerrada”. La posición “normalmente abierta” es opcional.
+La activación hidráulica puede ser integrada a otras aplicaciones según requerimiento.</p>
+  </div>
+</div>		
+
+
+<div class="card" style=" width: 15rem;">
+
+  <img src="/img/mallas.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Mallas y agrofilms</h5>
+    <p class="card-text">Es un tejido de diferentes densidades, fabricado a partir de cintas de polietileno de alta densidad, tratadas especialmente contra rayos ultravioleta (UV), que permite una duración de hasta cuatro temporadas de uso con excelentes propiedades mecánicas y gran estabilización de la luz y térmica.</p>
+  </div>
+</div>	
+<div class="card" style="width: 15rem;">
+
+  <img src="/img/motobomba.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Motobombas y electrobombas</h5>
+    <p class="card-text">La electrobomba autocebante es un equipo de bombeo compacto y de gran versatilidad. Tiene como gran ventaja el que no necesita cebado de la tubería de succión. Un mínimo de componentes, y una construcción simple y robusta garantizan un servicio eficiente y libre de mantenimiento.</p>
+  </div>
+</div>
+<div class="card" style="width: 15rem;">
+
+  <img src="/img/reser.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Geomenbranas</h5>
+    <p class="card-text">Las Geomembranas de PVC de Orbes son de Plastec marca italiana con  más de 40 años de experiencia en el sector de la impermeabilización.  Al principio la empresa comenzó con la producción de bolsas para el área de construcción y membranas para la agricultura. Posteriormente, Plastec Italia Srl se ha especializado en la producción de membranas de impermeabilización de las cuencas de aguas de recolección y películas para los más pequeños estanques en el sector de la jardinería.</p>
+  </div>
+</div>
+			
+					
 					<div class="col-md-4">
 						<div class="container">
+							
 							<div class="row">
 								<div class="col-sm-12">
 									<div class="title">
-										<h2>About</h2>
+										<h2></h2>
 									</div>
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua. At vero eos et a et ea
-										rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-										Lorem ipsum dolor sit amet.</p>
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-										et justo duo dolores et ea rebum. .</p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="title">
-										<h2>Contact</h2>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-										sed diam nonumy eirmod tempor invidunt ut labore et dolore
-										magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-										et justo duo dolores et ea rebum. .</p>
+								
 								</div>
 							</div>
 						</div>

@@ -33,7 +33,7 @@ $( function() {
 				<div class="row">
 					<div class="col-md-8 offset-md-2 col-sm-12">
 						<div class="title">
-							<h2>Nuevo Orden de compra</h2>
+							<h2>Nueva Orden de compra</h2>
 						</div>
 
 						<form th:object="${purchaseorder}" th:action="@{/purchaseorders/create}"
@@ -45,20 +45,24 @@ $( function() {
 							
 							
 							<div class="form-group">
-								<label for="supplier">Proveedor</label> <select id="supplier"
-									class="form-control" th:field="*{suppliers}"
-									multiple="multiple">
+								<label for="supplier">Proveedor</label> 
+								<select id="supplier"
+									class="form-control" th:field="*{suppliers}">
 									<option th:each="supplier : ${suppliers}"
 										th:text="${supplier.enterprise}" th:value="${supplier.supplierId}"></option>
 								</select>
 							</div>
 							
 
-							<div class="form-group">
-								<input th:field="*{product}" id="product" type="text"
-									class="form-control validate"> <label for="product">Producto</label>
-								<span class="text-danger errorMsg"
-									th:if="${#fields.hasErrors('product')}" th:errors="*{product}"></span>
+								<div class="form-group">
+								<label for="product"  >Producto</label> 
+								<select id="product"
+									class="form-control" th:field="*{products}">
+									<option th:each="product : ${products}"
+										th:text="${product.name}" th:value="${product.id}"></option>
+										
+								</select>
+								
 							</div>
 							
 
@@ -90,7 +94,7 @@ $( function() {
 									th:errors="*{detail}"></span>
 							</div>
 							
-							<button type="submit" class="btn btn-dark">Guardar</button>
+							<button type="submit" class="btn btn-dark">Registrar</button>
 							<a class="btn btn-primary" th:href="@{'/purchaseorders'}">Cancelar</a>
 
 						</form>

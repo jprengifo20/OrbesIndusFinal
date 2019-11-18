@@ -28,7 +28,7 @@ public interface PurchaseOrderService  {
 	
     Page<PurchaseOrder> findAll(Pageable pageable);
 
-    Page<PurchaseOrder> findByProduct(String product,Pageable pageable);
+    Page<PurchaseOrder> findByResponsible(String responsible,Pageable pageable);
     
 
 

@@ -47,7 +47,7 @@
 						</div>
 
 
-						<table class="table table-hover">
+						<table class="table table-bordered">	
 							<thead>
 								<tr>
 									<th>Area</th>
@@ -59,14 +59,14 @@
 									
 
 									<th></th>
-									<th></th>
-									<th></th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="request : ${requestsList}">
 									<td th:text="${request.area}"></td>
-									<td th:text="${request.product}"></td>
+										<td><th:block th:each="product : ${request.products}">
+											<span th:text="${product.name} + ' '"></span>
+										</th:block></td>
 									<td th:text="${request.quantity}"></td>
 									<td th:text="${request.state}"></td>
 									<td th:text="${request.date}"></td>

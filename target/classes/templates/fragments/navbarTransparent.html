@@ -15,9 +15,9 @@
 		<div class="collapse navbar-collapse">
 			<ul class="navbar-nav ml-auto">
 				
+			
 				
-				
-	<li class="nav-item dropdown">
+	<li   sec:authorize="hasRole('ROLE_USER')  || hasRole('ROLE_ADMIN')" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" 
         href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" sec:authorize="isAuthenticated()" >
           Mantenimiento
@@ -26,12 +26,12 @@
           <a class="dropdown-item" th:href="@{/requests}">Solicitud de compra</a>
           <a class="dropdown-item" th:href="@{/purchaseorders/}">Orden de compra</a>
           <a class="dropdown-item" th:href="@{/suppliers}">Proveedores</a>
-		 <a class="dropdown-item" th:href="@{/articles}">Productos</a>
+		 <a class="dropdown-item" th:href="@{/products}">Productos</a>
 		 <a class="dropdown-item" th:href="@{/incidents}">Incidencias</a>
         </div>
       </li>	
 			
-		<li class="nav-item dropdown">
+		<li sec:authorize="hasRole('ROLE_USER') "  class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" 
         href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" sec:authorize="isAuthenticated()" >
           Operaciones
@@ -43,7 +43,7 @@
       </li>		
 				
 				
-		<li class="nav-item dropdown">
+		<li  sec:authorize="hasRole('ROLE_USER')  || hasRole('ROLE_ADMIN')"  class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" 
         href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" sec:authorize="isAuthenticated()" >
           Consultas
@@ -57,7 +57,7 @@
           <a class="dropdown-item" th:href="@{/purchaseorders/querysPurchaseOrders}">Orden de compra</a>
           
 
-		 <a class="dropdown-item" th:href="@{/articles/new}">Productos</a>
+		 <a class="dropdown-item" th:href="@{/products/querysProducts}">Productos </a>
 		 <a class="dropdown-item" th:href="@{/incidents/querysIncidents}">Incidencias</a>
         </div>
       </li>

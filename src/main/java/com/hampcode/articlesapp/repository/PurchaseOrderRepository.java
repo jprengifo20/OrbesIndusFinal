@@ -37,8 +37,8 @@ public interface PurchaseOrderRepository extends PagingAndSortingRepository<Purc
      */
 	Page<PurchaseOrder> findAll(Pageable pageable);
 
-	@Query("SELECT i FROM PurchaseOrder i WHERE i.product like %?1%")
-	Page<PurchaseOrder> findByProduct(String product,Pageable pageable);
+	@Query("SELECT i FROM PurchaseOrder i WHERE i.responsible like %?1%")
+	Page<PurchaseOrder> findByResponsible(String responsible,Pageable pageable);
 
 }
 

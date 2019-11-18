@@ -40,10 +40,11 @@ public class RequestServiceImpl implements RequestService {
 		Request request = findById(id);
 
 		request.setArea(requestDetails.getArea());
-		request.setProduct(requestDetails.getProduct());
+		request.setProducts(requestDetails.getProducts());
 		request.setQuantity(requestDetails.getQuantity());
 		request.setState(requestDetails.getState());
 		request.setDate(requestDetails.getDate());
+		request.setDate2(requestDetails.getDate2());
 		request.setUnit_price(requestDetails.getUnit_price());
 		request.setDescription(requestDetails.getDescription());
 
@@ -87,7 +88,11 @@ public class RequestServiceImpl implements RequestService {
 
 	@Override
 	public Page<Request> finByArea(String area, Pageable pageable) {
-		return requestRepository.finByArea(area, pageable);
+		
+			return requestRepository.finByArea(area, pageable);
+		
+		
+		
 	}
 
 	

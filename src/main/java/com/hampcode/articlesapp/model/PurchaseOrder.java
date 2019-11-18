@@ -34,15 +34,21 @@ public class PurchaseOrder {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@NotEmpty(message="Error de validación: se necesita un valor")
-	@Column(name = "product")
-	private String product;
+
 	
 	@NotEmpty(message="Error de validación: se necesita un valor")
 	@Column(name = "responsible")
 	private String responsible;
 	
-	@NotEmpty(message="Error de validación: se necesita un valor")
+	@NotEmpty(message="Seleccione producto")
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "purchaseorder_product", 
+				joinColumns = { @JoinColumn(name = "purchaseorder_id") }, 
+				inverseJoinColumns = {@JoinColumn(name = "product_id") 
+			})
+	private List<Product> products = new ArrayList<>();
+	
+	@NotEmpty(message="Seleccione proveedor")
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "purchaseorder_supplier", 
 				joinColumns = { @JoinColumn(name = "purchaseorder_id") }, 
@@ -80,13 +86,9 @@ public class PurchaseOrder {
 		this.id = id;
 	}
 
-	public String getProduct() {
-		return product;
-	}
+	
 
-	public void setProduct(String product) {
-		this.product = product;
-	}
+
 
 	public String getResponsible() {
 		return responsible;
@@ -105,6 +107,18 @@ public class PurchaseOrder {
 		this.suppliers = suppliers;
 	}
 	
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public String getDate() {
 		return date;

@@ -54,12 +54,6 @@ return false;
 				<div class="row">
 					<div class="col-md-8 offset-md-2 col-sm-12">
 
-
-
-
-<br /><br />
-
-
 						
 						<div class="title">
 							<h2> Gestionar Solicitudes de Compras</h2>
@@ -69,14 +63,16 @@ return false;
 						</div>
 
 
-						<table class="table table-responsive highlight">
+						<table class="table table-bordered">	
 							<thead>
 								<tr>
 									<th>Area</th>
-									<th>Product</th>
-									<th>Quantity</th>
-									<th>State</th>
-									<th>Date</th>
+									<th>Producto</th>
+									<th>Cantidad</th>
+									<th>Estado de solicitud</th>
+									<th>Fecha de Inicio</th>
+									<th>Fecha a finalizar</th>
+									
 																				
 									
 
@@ -88,10 +84,13 @@ return false;
 							<tbody>
 								<tr th:each="request : ${requestsList}">
 									<td th:text="${request.area}"></td>
-									<td th:text="${request.product}"></td>
+									<td><th:block th:each="product : ${request.products}">
+											<span th:text="${product.name} + ' '"></span>
+										</th:block></td>
 									<td th:text="${request.quantity}"></td>
 									<td th:text="${request.state}"></td>
 									<td th:text="${request.date}"></td>
+									<td th:text="${request.date2}"></td>
 
 
 

@@ -64,14 +64,13 @@
 									 </fieldset>
 
 							
-
-							<div class="form-group"  style="display:none">
-								<input th:field="*{product}" id="product" type="text"
-									class="form-control validate"> <label for="product">Producto</label>
-								<span class="text-danger errorMsg"
-									th:if="${#fields.hasErrors('product')}" th:errors="*{product}"></span>
-							</div>
-							
+					<div class="form-group">
+						<label for="product">Producto</label> <select id="product"
+							class="form-control" th:field="*{products}" multiple="multiple">
+							<option th:each="product : ${products}"
+								th:text="${product.name}" th:value="${product.id}"></option>
+						</select>
+					</div>
 							
 							<div class="form-group"  style="display:none">
 								<input th:field="*{quantity}"  type="number" value="1" name="quantity[]" id="quantity"
@@ -82,24 +81,24 @@
 							</div>
 
 
-						<div class="form-group">
-								<input th:field="*{state}" id="state" type="text"
-									class="form-control validate"> <label for="state">Estado</label>
+							
+
+
+ 							<div class="form-group" >
+								<label  for="state">  Seleccione estado solicitud --> </label> 
+								
+								
+								<select id="state" name="state">
+									<option value="Rechazado"  > [Rechazar]</option>
+									<option value="Aprobado"  > [Aprobar]</option>
+									
+								</select>
+								
 								<span class="text-danger errorMsg"
-									th:if="${#fields.hasErrors('state')}"
-									th:errors="state"></span>
+								    th:if="${#fields.hasErrors('state')}" th:errors="*{state}">								
+								</span>
+								
 							</div>
-
-
- 							<a class="nav-link dropdown-toggle" 
-							        href="#" id="state" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  >
-							          Estado de solicitud..
-							        </a>
-							        <div class="dropdown-menu" aria-labelledby="eS">
-							  <a class="dropdown-item" th:href="@{/requests}"> APROBADO</a>
-							<a class="dropdown-item" th:href="@{/requests}">RECHAZADO</a>
-															         
-							        </div>
 							        
 							        
 							<div class="form-group"  style="display:none" >
@@ -122,7 +121,7 @@
 							
 								
 							
-							<button type="submit" class="btn btn-dark">Actualizar</button>
+							<button type="submit" class="btn btn-dark">Aceptar</button>
 							<a class="btn btn-primary" th:href="@{'/requests/allOperationRequests'}">Cancelar</a>
 
 						</form>

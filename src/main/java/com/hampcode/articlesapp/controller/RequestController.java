@@ -1,5 +1,6 @@
 package com.hampcode.articlesapp.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.swing.JOptionPane;
@@ -19,6 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hampcode.articlesapp.common.PageInitPaginationRequest;
 import com.hampcode.articlesapp.model.Request;
+import com.hampcode.articlesapp.model.Product;
+import com.hampcode.articlesapp.service.ProductService;
 import com.hampcode.articlesapp.service.RequestService;
 
 @Controller
@@ -41,6 +44,9 @@ public class RequestController {
 	
 	@Autowired
 	private RequestService requestService;
+	
+	@Autowired
+	private ProductService productService;
 
 	@GetMapping("/{id}")
 	public String getRequestyId(@PathVariable(value = "id") Long requestId, Model model) {
@@ -62,6 +68,8 @@ public class RequestController {
 		// in case of redirection model will contain article
 		if (!model.containsAttribute("request")) {
 			model.addAttribute("request", new Request());
+			 List<Product> products = productService.getAllProducts();
+		     model.addAttribute("products", products);
 		}
 		return REQUEST_ADD_FORM_VIEW;
 	}
@@ -94,6 +102,8 @@ public class RequestController {
 		 * with field values
 		 */
 		if (!model.containsAttribute("request")) {
+			List<Product> products = productService.getAllProducts();
+		     model.addAttribute("products", products);
 			model.addAttribute("request", requestService.findById(requestId));
 		}
 		return REQUEST_EDIT_FORM_VIEW;
@@ -143,6 +153,8 @@ public class RequestController {
 		 * with field values
 		 */
 		if (!model.containsAttribute("request")) {
+			List<Product> products = productService.getAllProducts();
+		     model.addAttribute("products", products);
 			model.addAttribute("request", requestService.findById(requestId));
 		}
 		return REQUEST_EDIT_OPERATION_FORM_VIEW;

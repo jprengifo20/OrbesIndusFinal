@@ -28,18 +28,16 @@
 		<div class="section">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-8 offset-md-2 col-sm-12">
+					
+
+
 						<div class="title">
-						</div>
-
-
-				<div class="title">
 							<h2> Gestionar Ordenes de Compra</h2>
 							<a th:href="@{/purchaseorders/new}" class="btn btn-primary"> Nueva orden de compra</a>
 							<h6>__________________________________________________________________</h6>
 							
 						</div>
-						<table class="table table-responsive highlight">
+						<table class="table table-bordered">	
 							<thead>
 								<tr>
 									<th>Proveedor</th>
@@ -61,7 +59,9 @@
 												description here...</span>
 										</th:block></td>
 									<td th:text="${purchaseorder.date}"></td>
-									<td th:text="${purchaseorder.product}"></td>
+									<td><th:block th:each="product : ${purchaseorder.products}">
+											<span th:text="${product.name} + ' '"></span>
+										</th:block></td>
 									<td th:text="${purchaseorder.responsible}"></td>
 									<td th:text="${purchaseorder.detail}"></td>
 									

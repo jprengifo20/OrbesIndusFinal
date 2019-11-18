@@ -23,17 +23,14 @@ var getData=function()
 var area=document.getElementById('area').value;
 
 
+if(area=="")
+	{	
 
-if(area=="" )
-	{
-
-		alert("Ingrese un valor en el campo para relizar la busqueda");
 	
 	}
-		else{
-			alert("No existe registro");
 
-			}
+
+		
 	
 }
 
@@ -62,20 +59,29 @@ if(area=="" )
 
 									<form th:action="@{/requests/search}" method="GET">
 								<div class="form-row align-items-center">
-								<div class="col-auto">
-									<label class="sr-only" for="area">Area</label>
-									<input id="area" type="text" class="form control" name="area"
-									placeholder="Search by Area">
-								</div>
+									<select id="area"  name="area">
+										<option value="">[--Seleccionar todos--] </option>	
+										<option value="Produccion">[Produccion] </option>	
+										<option value="Inventario">[Inventario] </option>	
+										<option value="Contabilidad">[Contabilidad] </option>	
+										<option value="Finanzas">[Finanzas] </option>	
+										<option value="Tecnologia informatica">[TI] </option>	
+														
+									
+									</select>
+								
+								
 								
 								<div class="col-auto">
 									<button type="submit" onclick="getData()" class="btn btn-primary">Search</button>
+									
 								</div>
 								</div>
 							</form>				
 
-						<table class="table table-responsive highlight">
-							<thead>
+
+						<table class="table table-bordered">
+							<thead class="thead-dark">
 								<tr>
 									<th>Area</th>
 									<th>Product</th>
@@ -85,16 +91,15 @@ if(area=="" )
 																				
 									
 
-									<th></th>
-									<th></th>
-									<th></th>
+								
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="request : ${requestsList}">
-									<td th:text="${request.area}"></td>
-									<td th:text="${request.product}"></td>
-									<td th:text="${request.quantity}"></td>
+								<tr   th:each="request : ${requestsList}">
+									<td   th:text="${request.area}"></td>
+								<td><th:block th:each="product : ${request.products}">
+											<span th:text="${product.name} + ' '"></span>
+										</th:block></td>									<td th:text="${request.quantity}"></td>
 									<td th:text="${request.state}"></td>
 									<td th:text="${request.date}"></td>
 

@@ -44,7 +44,7 @@ public class PageInitPaginationPurchaseOrder {
 	}
 
 	public  ModelAndView initPaginationSearch(Optional<Integer> pageSize, Optional<Integer> page, 
-			String url, String product)  {
+			String url, String responsible)  {
 		ModelAndView initModelView = new ModelAndView(url);
 		// If pageSize == null, return initial page size
 		int evalPageSize = pageSize.orElse(INITIAL_PAGE_SIZE);
@@ -54,7 +54,7 @@ public class PageInitPaginationPurchaseOrder {
 		 */
 		int evalPage = (page.orElse(0) < 1) ? INITIAL_PAGE : page.get() - 1;
 		
-		Page<PurchaseOrder> purchaseordersList = purchaseorderService.findByProduct(product, PageRequest.of(evalPage,evalPageSize));
+		Page<PurchaseOrder> purchaseordersList = purchaseorderService.findByResponsible(responsible, PageRequest.of(evalPage,evalPageSize));
 				/*
 				 
 				  */

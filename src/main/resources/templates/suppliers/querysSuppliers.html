@@ -52,26 +52,23 @@
 								</div>
 							</form>				
 
-						<table class="table table-responsive highlight">
-							<thead>
+						<table class="table table-bordered">
+							<thead class="thead-dark">
 								<tr>
 										<th>Enterprise</th>
 									<th>RUC</th>
-									<th>Product</th>
+									<th>Direccion de empresa</th>
 									<th>Phone</th>
 																				
 									
 
-									<th></th>
-									<th></th>
-									<th></th>
 								</tr>
 							</thead>
 							<tbody>
 									<tr th:each="supplier : ${suppliersList}">
 									<td th:text="${supplier.enterprise}"></td>
 									<td th:text="${supplier.ruc}"></td>
-									<td th:text="${supplier.product}"></td>
+									<td th:text="${supplier.direccion}"></td>
 									<td th:text="${supplier.phone}"></td>
 
 

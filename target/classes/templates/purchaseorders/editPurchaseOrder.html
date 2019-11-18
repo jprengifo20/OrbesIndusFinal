@@ -40,13 +40,7 @@ $( function() {
 							th:action="@{/purchaseorders/{id}/update(id=${purchaseorder.id})}"
 							th:method="post">
 							
-							<div class="form-group">
-						<label for="supplier">Proveedor</label> <select id="supplier"
-							class="form-control" th:field="*{suppliers}" multiple="multiple">
-							<option th:each="supplier : ${suppliers}"
-								th:text="${supplier.enterprise}" th:value="${supplier.supplierId}"></option>
-						</select>
-					</div>
+						
 							
 							<div class="alert alert-danger" th:if="${error!=null}"
 								th:text="${error}"></div>
@@ -60,13 +54,20 @@ $( function() {
 									class="form-control validate"> <label for="id">id</label>
 							</div>
 
-
+							<div class="form-group">
+								<label for="supplier">Proveedor</label> <select id="supplier"
+									class="form-control" th:field="*{suppliers}" >
+									<option th:each="supplier : ${suppliers}"
+										th:text="${supplier.enterprise}" th:value="${supplier.supplierId}"></option>
+								</select>
+							</div>
 
 							<div class="form-group">
-								<input th:field="*{product}" id="product" type="text"
-									class="form-control validate"> <label for="product">Producto</label>
-								<span class="text-danger errorMsg"
-									th:if="${#fields.hasErrors('product')}" th:errors="*{product}"></span>
+								<label for="product">Producto</label> <select id="product"
+									class="form-control" th:field="*{products}" >
+									<option th:each="product : ${products}"
+										th:text="${product.name}" th:value="${product.id}"></option>
+								</select>
 							</div>
 							
 
@@ -98,8 +99,8 @@ $( function() {
 									th:errors="*{detail}"></span>
 							</div>
 							
-							<button type="submit" class="btn btn-dark">Save</button>
-							<a class="btn btn-primary" th:href="@{'/purchaseorders'}">Cancel</a>
+							<button type="submit" class="btn btn-dark">Actualizar</button>
+							<a class="btn btn-primary" th:href="@{'/purchaseorders'}">Cancelar</a>
 
 						</form>
 					</div>

@@ -11179,7 +11179,7 @@ label {
 }
 
 .title {
-  margin-top: 30px;
+  margin-top: 0px;
   margin-bottom: 25px;
   min-height: 32px;
 }
@@ -13996,7 +13996,7 @@ textarea {
 
 .navbar .navbar-nav .nav-item .nav-link {
   position: relative;
-  color: blue;
+  color: #0734d9;
   padding: 0.7rem;
   font-weight: 800;
   font-size: 12px;
@@ -14092,7 +14092,7 @@ textarea {
 
 .navbar .navbar-brand {
   position: relative;
-  color: blue;
+  color: #0734d9;
   height: 50px;
   font-size: 1.300rem;
   line-height: 30px;
@@ -14101,7 +14101,7 @@ textarea {
 
 .navbar.bg-primary {
   color: #fff;
-  background-color: #49e34e !important;
+  background-color: #ffffff !important;
   box-shadow: 0 4px 20px 0px #19198C, 0 7px 12px -5px rgba(156, 39, 176, 0.46);
 }
 
@@ -17343,7 +17343,7 @@ footer .pull-center {
 }
 
 .section {
-  padding: 70px 0;
+  padding: 0px 0;
 }
 
 .profile-page .page-header {

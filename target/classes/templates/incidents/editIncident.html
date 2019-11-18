@@ -38,13 +38,14 @@
 							th:action="@{/incidents/{id}/update(id=${incident.id})}"
 							th:method="post">
 							
-							<div class="form-group">
+					<div class="form-group">
 						<label for="supplier">Proveedor</label> <select id="supplier"
-							class="form-control" th:field="*{suppliers}" multiple="multiple">
+							class="form-control" th:field="*{suppliers}" >
 							<option th:each="supplier : ${suppliers}"
 								th:text="${supplier.enterprise}" th:value="${supplier.supplierId}"></option>
 						</select>
 					</div>
+
 
 							<div class="alert alert-danger" th:if="${error!=null}"
 								th:text="${error}"></div>
@@ -85,8 +86,8 @@
 								
 							</div>
 
-							<button type="submit" class="btn btn-dark">Save</button>
-							<a class="btn btn-primary" th:href="@{'/incidents'}">Cancel</a>
+							<button type="submit" class="btn btn-dark">Actualizar</button>
+							<a class="btn btn-primary" th:href="@{'/incidents'}">Cancelar</a>
 
 						</form>
 					</div>
