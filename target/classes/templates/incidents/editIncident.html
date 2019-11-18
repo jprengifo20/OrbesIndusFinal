@@ -11,11 +11,15 @@
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
 	
 <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script>
-  
+$(function () {
+    $.datepicker.setDefaults($.datepicker.regional["es"]);
+    $("#datepicker").datepicker({
+        dateFormat: 'dd/mm/yy',
+        firstDay: 1
+    }).datepicker("setDate", new Date());
+    $("#datepicker").datepicker({ minDate: 0 });
+ });
+</script>
 
 </head>
 
